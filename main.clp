@@ -8,6 +8,7 @@
 ; (deffacts initial-facts (Diagnosis (Antibody Start)))
 
 (defrule D-HBsAg
+    =>
     (printout t ": HBsAg? > ")
     (bind ?HBsAg (read))
     (if (subsetp (create$ ?HBsAg) (create$ positive negative)) 
