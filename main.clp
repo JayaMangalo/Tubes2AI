@@ -28,9 +28,9 @@
 (defrule D-antiHBc
     (or 
         (Diagnosis (Antibody antiHDV)(Status negative))
-        (and 
+        (and
             (Diagnosis (Antibody HBsAg)(Status negative))
-            (Diagnosis (Antibody antiHBs)(Status positive))
+            (Diagnosis (Antibody antiHBs)(Status ?antiHBs))
         )
     )
     =>
@@ -56,8 +56,11 @@
 )
 
 (defrule D-IgM_antiHBc
-        
-    (Diagnosis (Antibody antiHBs)(Status negative))
+    (and
+        (Diagnosis (Antibody antiHBc)(Status positive))
+        (Diagnosis (Antibody antiHBs)(Status negative))
+        (Diagnosis (Antibody HBsAg)(Status positive))
+    )
     =>
     (printout t ": IgM anti-HBc? > ")
     (bind ?IgM_antiHBc(read))
