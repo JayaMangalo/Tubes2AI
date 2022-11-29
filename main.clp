@@ -56,6 +56,7 @@
 )
 
 (defrule D-IgM_antiHBc
+        
     (Diagnosis (Antibody antiHBs)(Status negative))
     =>
     (printout t ": IgM anti-HBc? > ")
